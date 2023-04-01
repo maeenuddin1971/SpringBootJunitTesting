@@ -34,4 +34,16 @@ public class BookController {
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
+        Boolean isDeleted = this.bookService.delete(id);
+        return new ResponseEntity<>(isDeleted, HttpStatus.OK);
+    }
+
+    @GetMapping("/getByWriter/{writer}")
+    public ResponseEntity<?> getByWriter(@PathVariable(name = "writer") String writer) {
+        List<Book> bookList = this.bookService.getBookByWriter(writer);
+        return new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
 }

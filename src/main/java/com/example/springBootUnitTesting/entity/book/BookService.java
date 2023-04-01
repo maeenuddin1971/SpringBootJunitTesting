@@ -24,4 +24,13 @@ public class BookService {
         return this.bookRepo.findAll();
     }
 
+    public Boolean delete(Long id) {
+        this.bookRepo.deleteById(id);
+        return this.bookRepo.existsById(id);
+    }
+
+    public List<Book> getBookByWriter(String writer) {
+         return this.bookRepo.findAllByWriter(writer);
+    }
+
 }
